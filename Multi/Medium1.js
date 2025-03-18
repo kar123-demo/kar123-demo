@@ -70,10 +70,10 @@ function flipCard(card) {
         lockBoard = false;
 
         if (initialColor === 'rgb(255, 99, 71)') {
-          rs -= 0.5;
+          rs -= 2.5;
           document.getElementById("m1").textContent = "RedScore→" + rs;
         } else {
-          bs -= 0.5;
+          bs -= 2.5;
           document.getElementById("s1").textContent = "BlueScore→" + bs;
         }
 
