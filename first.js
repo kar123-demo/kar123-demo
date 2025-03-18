@@ -189,8 +189,18 @@ function startGame() {
                 window.open('./single/Hard.html', '_blank');
         }
     } else if (mode1 === "multi") {
+        if(difficulty==="easy"){
         alert("Starting Multiplayer Game with " + difficulty + " difficulty.");
         window.open('./Multi/harish2.html', '_blank');
+        }
+       else if(difficulty==="medium"){
+            alert("Starting Multiplayer Game with " + difficulty + " difficulty.");
+            window.open('./Multi/Medium1.html', '_blank');
+            }
+    else if(difficulty==="hard"){
+                alert("Starting Multiplayer Game with " + difficulty + " difficulty.");
+                window.open('./Multi/harish2.html', '_blank');
+                }
     }
 }
 
