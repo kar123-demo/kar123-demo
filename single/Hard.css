@@ -70,6 +70,8 @@
     box-shadow: #333;
     background-origin: padding-box;
     top: 5vh;
+    border-radius: 20px;
+    box-shadow:5px 5px 5px black ;
   }
   
   #tim {
