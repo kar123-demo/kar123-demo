@@ -36,7 +36,7 @@ function flipCard(card) {
       flippedCards = [];
       lockBoard = false;
 
-      if (count === 6) {
+      if (count === 8) {
         winSound.play();
         showPopup("🎉 Game Over! You Won! 🎉");
         confetti();
