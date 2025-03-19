@@ -181,7 +181,7 @@ function toggleBackgroundColor() {
 }
 
 window.onload = function () {
-  document.body.style.zoom = window.innerWidth < 1921 ? "76%" : "100%";
+  document.body.style.zoom = window.innerWidth < 1921 ? "70%" : "100%";
   shuffleCards();
   setRandomBackgroundColor();
   document.querySelectorAll('.card2').forEach(card => {
