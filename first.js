@@ -1,12 +1,13 @@
 let mode1 = "-1";
 let difficulty = "";
-
+let c=0;
 const v = document.getElementById("background-video");
 v.onended = function() {
     v.pause(); 
 };
 
 function showImage() {
+    c=1;
     let imageContainer = document.createElement("div");
     imageContainer.className = "image-container";
 
@@ -17,6 +18,7 @@ function showImage() {
     closeButton.textContent = "Close";
     closeButton.className = "close-btn";
     closeButton.onclick = function () {
+        c=0;
         document.body.removeChild(imageContainer); 
     };
 
@@ -27,6 +29,7 @@ function showImage() {
 }
 
 function mode() {
+    c=1;
     let modeContainer = document.createElement("div");
     modeContainer.className = "mode-container";
     
@@ -38,6 +41,7 @@ function mode() {
     singlePlayerBtn.innerText = "Single Player";
     singlePlayerBtn.className = "mode-button";
     singlePlayerBtn.onclick = function() {
+        c=0;
         mode1 = "single";
         showDifficultyOptions();
         document.body.removeChild(modeContainer); 
@@ -47,6 +51,7 @@ function mode() {
     multiPlayerBtn.innerText = "Multiplayer";
     multiPlayerBtn.className = "mode-button";
     multiPlayerBtn.onclick = function() {
+        c=0;
         mode1 = "multi";
         showDifficultyOptions();
         document.body.removeChild(modeContainer); 
@@ -56,6 +61,7 @@ function mode() {
     closeButton.innerText = "✖";
     closeButton.className = "close-button";
     closeButton.onclick = function() {
+        c=0;
         document.body.removeChild(modeContainer);
     };
     
@@ -131,6 +137,7 @@ function mode() {
 }
 
 function showDifficultyOptions() {
+    c=1;
     let difficultyContainer = document.createElement("div");
     difficultyContainer.className = "difficulty-dropdown";
 
@@ -138,6 +145,7 @@ function showDifficultyOptions() {
     easyBtn.innerText = "Easy";
     easyBtn.onclick = function() {
         difficulty = "easy";
+        c=0;
         updatePlayButton();
         difficultyContainer.style.display = "none";  
     };
@@ -145,6 +153,7 @@ function showDifficultyOptions() {
     let mediumBtn = document.createElement("button");
     mediumBtn.innerText = "Medium";
     mediumBtn.onclick = function() {
+        c=0;
         difficulty = "medium";
         updatePlayButton();
         difficultyContainer.style.display = "none";  
@@ -154,6 +163,7 @@ function showDifficultyOptions() {
     hardBtn.innerText = "Hard";
     hardBtn.onclick = function() {
         difficulty = "hard";
+        c=0;
         updatePlayButton();
         difficultyContainer.style.display = "none";  
     };
@@ -199,7 +209,7 @@ function startGame() {
             }
     else if(difficulty==="hard"){
                 alert("Starting Multiplayer Game with " + difficulty + " difficulty.");
-                window.open('./Multi/harish2.html', '_blank');
+                window.open('./Multi/Hard1.html', '_blank');
                 }
     }
 }
