@@ -216,7 +216,7 @@ function startGame() {
 
 function demo() {
     if (mode1 === "-1") { 
-        window.alert("Please select mode and difficulty");
+        mode();
     } else {
         startGame();
     }
