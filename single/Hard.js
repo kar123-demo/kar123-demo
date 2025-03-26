@@ -137,7 +137,7 @@ function useHint() {
 function showPopup(message) {
   let popup = document.createElement("div");
   popup.id = "gameOverPopup";
-  let acc=(sc/60)*100;
+  let acc=(sc/100)*100;
   let r=acc.toFixed(2);
   popup.innerHTML = `<p>${message}</p><br><button onclick="closePopup()">Play Again</button><br><p>Your Accuracy : ${r}%</p><br><p>Refresh to Play Again</p>`;
 
