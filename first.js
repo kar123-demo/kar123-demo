@@ -221,3 +221,6 @@ function demo() {
         startGame();
     }
 }
+window.onload=()=>{
+   mode1="-1";
+}
