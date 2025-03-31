@@ -200,3 +200,15 @@ body {
   color: #ffffff;
   display: inline-block;
 }
+#timer{
+  position: absolute;
+  left: 50%;
+  top: 5vh;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  background-color: #f3f3f3;
+  border-radius: 100%;
+  padding: 28px;
+  box-shadow: 2px 2px 10px  black;
+  background-color: antiquewhite;
+}

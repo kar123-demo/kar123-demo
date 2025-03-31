@@ -3,6 +3,10 @@ let rs = 0;
 let flippedCards = [];
 let lockBoard = false;
 let initialColor = "";
+let timer = 10;
+let timerInterval;
+let isRedTurn = true;
+
 const leftSemiCircle = document.querySelector(".semi-circle");
 const rightSemiCircle = document.querySelector(".semi-circle1");
 
@@ -18,7 +22,6 @@ function setRandomBackgroundColor() {
 function highlightScoreBox() {
   const redForm = document.getElementById("scor");
   const blueForm = document.getElementById("move");
-
   redForm.style.boxShadow = "";
   blueForm.style.boxShadow = "";
 
@@ -78,7 +81,7 @@ function flipCard(card) {
         }
 
         highlightScoreBox();
-        toggleBackgroundColor();
+        switchTurn();
       }, 1000);
     }
   }
@@ -148,6 +151,7 @@ function restartGame() {
 
   flippedCards = [];
   lockBoard = false;
+  startTimer();
 }
 
 function shuffleCards() {
@@ -176,14 +180,58 @@ function toggleBackgroundColor() {
     leftSemiCircle.style.transform = "translateX(0%)";
     rightSemiCircle.style.transform = "translateX(100%)";
   }
-
   highlightScoreBox();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timer = 10;
+  updateTimerDisplay();
+
+  timerInterval = setInterval(() => {
+    timer--;
+    updateTimerDisplay();
+
+    if (timer <= 0) {
+      clearInterval(timerInterval);
+      switchTurn();
+      toggleBackgroundColor();
+    }
+  }, 1200);
+}
+
+function updateTimerDisplay() {
+  const timerDisplay = document.getElementById("timer");
+  if (timerDisplay) {
+    timerDisplay.textContent = `${timer}s`;
+  }
+}
+
+function switchTurn() {
+  isRedTurn = !isRedTurn;
+  document.body.style.backgroundColor = isRedTurn ? 'rgb(255, 99, 71)' : 'rgb(123, 168, 212)';
+  highlightScoreBox();
+
+  if (flippedCards.length === 2) {
+    if (initialColor === 'rgb(255, 99, 71)') {
+      rs -= 2.5;
+    } else {
+      bs -= 2.5;
+    }
+  }
+
+  flippedCards.forEach(card => card.classList.remove('flip'));
+  flippedCards = [];
+
+  startTimer();
 }
 
 window.onload = function () {
   document.body.style.zoom = window.innerWidth < 1921 ? "70%" : "100%";
   shuffleCards();
   setRandomBackgroundColor();
+  startTimer();
+
   document.querySelectorAll('.card2').forEach(card => {
     card.addEventListener('click', function () {
       flipCard(card);

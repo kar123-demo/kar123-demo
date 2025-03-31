@@ -3,8 +3,14 @@ let rs = 0;
 let flippedCards = [];
 let lockBoard = false;
 let initialColor = "";
+let timer = 10;
+let timerInterval;
+let isRedTurn = true;
+
 const leftSemiCircle = document.querySelector(".semi-circle");
 const rightSemiCircle = document.querySelector(".semi-circle1");
+
+
 
 function setRandomBackgroundColor() {
   const colors = ['rgb(255, 99, 71)', 'rgb(123, 168, 212)'];
@@ -39,13 +45,14 @@ function flipCard(card) {
 
   if (flippedCards.length === 2) {
     lockBoard = true;
+    clearInterval(timerInterval);
 
     if (flippedCards[0].querySelector('.card-back img').src === flippedCards[1].querySelector('.card-back img').src) {
       flippedCards[0].classList.add('matched');
       flippedCards[1].classList.add('matched');
       flippedCards[0].style.boxShadow = "0px 0px 5px 0px green";
       flippedCards[1].style.boxShadow = "0px 0px 5px 0px green";
-     
+
       if (document.body.style.backgroundColor === 'rgb(255, 99, 71)') {
         rs += 10;
         document.getElementById("m1").textContent = "RedScore→" + rs;
@@ -79,6 +86,7 @@ function flipCard(card) {
 
         highlightScoreBox();
         toggleBackgroundColor();
+        startTimer();
       }, 1000);
     }
   }
@@ -101,7 +109,7 @@ function showPopup() {
 
   const popup = document.createElement('div');
   popup.classList.add('popup');
-  popup.innerHTML = ` 
+  popup.innerHTML = `
     <p>${message}</p>
     <p>Red Score: ${rs}</p>
     <p>Blue Score: ${bs}</p>
@@ -109,7 +117,6 @@ function showPopup() {
   `;
 
   document.body.appendChild(popup);
-
   popup.style.position = "fixed";
   popup.style.top = "50%";
   popup.style.left = "50%";
@@ -122,7 +129,6 @@ function showPopup() {
   popup.style.textAlign = "center";
   popup.style.zIndex = "1000";
   popup.style.width = "400px";
-  popup.style.height = "auto";
   popup.style.maxWidth = "90%";
 
   const replayButton = popup.querySelector('.replay-btn');
@@ -148,6 +154,7 @@ function restartGame() {
 
   flippedCards = [];
   lockBoard = false;
+  startTimer();
 }
 
 function shuffleCards() {
@@ -157,9 +164,7 @@ function shuffleCards() {
     const j = Math.floor(Math.random() * (i + 1));
     [cardArray[i], cardArray[j]] = [cardArray[j], cardArray[i]];
   }
-  for (let i = 0; i < cardArray.length; i++) {
-    cardArray[i].style.boxShadow = "";
-  }
+  cardArray.forEach(card => card.style.boxShadow = "");
   const main = document.querySelector('.main');
   cardArray.forEach(card => main.appendChild(card));
 }
@@ -178,12 +183,55 @@ function toggleBackgroundColor() {
   }
 
   highlightScoreBox();
+  startTimer();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timer = 10;
+  updateTimerDisplay();
+
+  timerInterval = setInterval(() => {
+    timer--;
+    updateTimerDisplay();
+
+    if (timer <= 0) {
+      clearInterval(timerInterval);
+      switchTurn();
+      toggleBackgroundColor();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const timerDisplay = document.getElementById("timer");
+  if (timerDisplay) {
+    timerDisplay.textContent = `${timer}s`;
+  }
+}
+
+function switchTurn() {
+  isRedTurn = !isRedTurn;
+  document.body.style.backgroundColor = isRedTurn ? 'rgb(255, 99, 71)' : 'rgb(123, 168, 212)';
+  highlightScoreBox();
+
+  flippedCards.forEach(card => card.classList.remove('flip'));
+  flippedCards = [];
+
+  if (initialColor === 'rgb(255, 99, 71)') {
+    rs -= 3;
+  } else {
+    bs -= 3;
+  }
+
+  startTimer();
 }
 
 window.onload = function () {
   document.body.style.zoom = window.innerWidth < 1921 ? "70%" : "100%";
   shuffleCards();
   setRandomBackgroundColor();
+  startTimer();
   document.querySelectorAll('.card2').forEach(card => {
     card.addEventListener('click', function () {
       flipCard(card);
