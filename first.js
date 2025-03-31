@@ -12,7 +12,10 @@ function showImage() {
     imageContainer.className = "image-container";
 
     let image = document.createElement("img");
-    image.src = "./pictures/instructions.png";
+    image.src = "./pictures/ins.png";
+    image.style.width="700px";
+    image.style.height="700px";
+
 
     let closeButton = document.createElement("button");
     closeButton.textContent = "Close";
