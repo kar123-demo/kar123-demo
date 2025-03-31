@@ -202,7 +202,7 @@ body {
 }
 #timer{
   position: absolute;
-  left: 50%;
+  left: 48%;
   top: 5vh;
   font-family: 'Courier New', Courier, monospace;
   font-size: 40px;
