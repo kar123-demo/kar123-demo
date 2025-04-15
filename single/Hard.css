@@ -60,13 +60,11 @@
   }
   
   .card-front {
-    background-color: #f3f3f3;
-    color: black;
+
   }
   
   .card-back {
-    background-color: #333;
-    color: white;
+   
     transform: rotateY(180deg);
   }
   
