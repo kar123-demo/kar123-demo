@@ -15,6 +15,7 @@
   padding-top: 25vh;
   padding-right: 25vw;
   padding-bottom: 25vh;
+  z-index: 1;
 }
 
 .main {
@@ -28,6 +29,15 @@
   width: 90%;  
   max-width: 1200px; 
   margin: 0 auto;
+
+  border-radius: 2em;
+
+  padding-top: 1em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-color: #333;
+  box-shadow: 10px 10px 15px 10px rgba(0,0,0,0.3);
+
 }
 
 .card-inner {
@@ -85,15 +95,27 @@
 #move {
   right: 25vw;
 }
+#bg {
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1; 
 
-body {
-  overflow: hidden;
-  background-position: center;
-  background-image: url("../pictures/wall.jpg");
-  background-repeat: no-repeat;
+ background-image: url("../pictures/wall.jpg");
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(12px);
+  -webkit-filter: blur(12px); 
 }
+
+
+
+
 
 .main1::-webkit-scrollbar {
   display: none;
