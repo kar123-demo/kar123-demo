@@ -48,7 +48,7 @@ function flipCard(card) {
         flippedCards[0].style.boxShadow = "";
         flippedCards[1].style.boxShadow = "";
         flippedCards = [];
-        sc=sc-3;
+        sc=sc-2.5;
         document.getElementById("s1").textContent="Score→"+sc;
         lockBoard = false;
       }, 1000);
