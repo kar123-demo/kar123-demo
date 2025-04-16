@@ -102,14 +102,14 @@
     width: 100%;
     z-index: -1; 
   
-   background-image: url("../pictures/wall1.jpg");
+   background-image: url("../pictures/back.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   
-    filter: blur(12px);
-    -webkit-filter: blur(12px); 
+    filter: blur(5px);
+    -webkit-filter: blur(5px); 
   }
   
   .main1::-webkit-scrollbar {
