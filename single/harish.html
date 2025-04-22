@@ -5,8 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Memory Matching Game</title>
     <link rel="stylesheet" href="index1.css">
+    <style>
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 15px 30px;
+            background-color: rgb(184, 201, 218);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 5px 5px 5px black;
+            z-index: 2;
+        }
+        .back-button:hover {
+            background-color: rgb(164, 181, 198);
+        }
+    </style>
 </head>
 <body>
+<button class="back-button" onclick="window.location.href='../index.html'">← Back</button>
 <div id="bg"></div>
   <form id="tim">
     <h1 id="t1">Timer → 150</h1>
